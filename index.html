@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Byte Refactory LLC - Software Consulting Excellence</title>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <style>
+        :root {
+            --bronze: #cd7f32;
+            --dark-gray: #2c2c2c;
+            --light-gray: #e5e4e2;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, var(--bronze) 0%, #b8701d 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--dark-gray) 0%, #1a1a1a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--dark-gray);
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #1a1a1a 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(205,127,50,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 480px;
+            height: 480px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bronze);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(205, 127, 50, 0.4);
+            background: #b8701d;
+        }
+
+        /* Debug borders for Google Sites testing */
+        .section {
+            padding: 80px 0;
+            border: 2px solid transparent;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--dark-gray);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light-gray);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-panels {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .about-panel {
+            background: var(--white);
+            padding: 35px 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--bronze);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .about-panel:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-width: 8px;
+        }
+
+        .about-panel h3 {
+            color: var(--bronze);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .about-panel p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--white);
+        }
+
+        .team-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+            background: var(--light-gray);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background-color: #2c2c2c;
+            object-fit: cover;
+            border: 5px solid var(--bronze);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-info {
+            padding-right: 20px;
+        }
+
+        .member-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+        }
+
+        .member-title {
+            font-size: 1.3rem;
+            color: var(--bronze);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .member-experience {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .member-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+
+        .education-section h4 {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .education-item {
+            background: var(--white);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--bronze);
+        }
+
+        .member-skills {
+            padding-left: 20px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--bronze);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            color: var(--white);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Backgrounds Section */
+        .backgrounds {
+            background: #2c2c2c;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 400px;
+        }
+
+        .backgrounds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .background-item {
+            text-align: center;
+            padding: 30px;
+            min-height: 200px;
+        }
+
+        .background-icon {
+            width: 80px;
+            height: 80px;
+            background: #cd7f32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .background-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #ffffff;
+        }
+
+        .background-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .background-description {
+            opacity: 0.9;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #e5e4e2;
+            min-height: 600px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #cd7f32;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
+        }
+
+        .contact-form {
+            background: #e5e4e2;
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-form iframe {
+            width: 100%;
+            max-width: 640px;
+            height: 900px;
+            border: none;
+            border-radius: 0px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bronze);
+        }
+
+        .footer-attribution {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-logo {
+                width: 320px;
+                height: 320px;
+            }
+
+            .about-content,
+            .contact-content,
+            .team-member {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .member-photo {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            .member-info,
+            .member-skills {
+                padding: 0;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-form {
+                padding: 10px;
+                margin-top: 20px;
+            }
+
+            .contact-form iframe {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .contact-info {
+                margin-bottom: 30px;
+            }
+
+            .contact-info h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-info p {
+                font-size: 0.95rem;
+            }
+
+            .contact-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-logo {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 5px;
+            }
+
+            .contact-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .contact-info p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .about-panel {
+                padding: 25px 20px;
+            }
+
+            .about-panel h3 {
+                font-size: 1.2rem;
+            }
+
+            .about-panel p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Menu for Testing -->
+    <nav
+        style="position: fixed; top: 20px; right: 20px; background: rgba(205, 127, 50, 0.9); padding: 10px; border-radius: 10px; z-index: 1000;">
+        <a href="#about" style="color: white; text-decoration: none; margin: 0 8px; font-size: 0.9rem;">About</a>
+        <a href="#team" style="color: white; text-decoration: none; margin: 0 8px; font-size: 0.9rem;">Team</a>
+        <a href="#services" style="color: white; text-decoration: none; margin: 0 8px; font-size: 0.9rem;">Services</a>
+        <a href="#backgrounds"
+            style="color: white; text-decoration: none; margin: 0 8px; font-size: 0.9rem;">Backgrounds</a>
+        <a href="#contact" style="color: white; text-decoration: none; margin: 0 8px; font-size: 0.9rem;">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <img src="https://drive.google.com/thumbnail?id=1Rg__opwSP_Ajia7wC-szowVvDd53piM0&sz=w4000"
+                    alt="Byte Refactory Logo" class="hero-logo">
+                <p class="hero-subtitle">Transforming Ideas into Exceptional Software Solutions</p>
+                <a href="#contact" class="cta-button">
+                    <i data-lucide="arrow-right"></i>
+                    Get Started Today
+                </a>
+            </div>
+        </div>
+    </section> <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Byte Refactory</h2>
+            <div class="about-content">
+                <div class="about-panels">
+                    <div class="about-panel">
+                        <h3>Our Foundation</h3>
+                        <p>Byte Refactory LLC is a newly established software consulting company founded on four
+                            decades of proven development expertise. We specialize in crafting cutting-edge software
+                            solutions that drive business growth and innovation.</p>
+                    </div>
+
+                    <div class="about-panel">
+                        <h3>Our Philosophy</h3>
+                        <p>We believe in the power of clean code, innovative architecture, and user-centric design. As a
+                            consulting company with deep technical roots, we're committed to bringing enterprise-level
+                            expertise to projects of all sizes.</p>
+                    </div>
+
+                    <div class="about-panel">
+                        <h3>Our Approach</h3>
+                        <p>From startup MVPs to enterprise-grade applications, we combine seasoned experience with the
+                            agility and focus that only a dedicated consultancy can provide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section -->
+    <section class="team section" id="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Leadership</h2>
+            <div class="team-content">
+                <div class="team-member">
+                    <img src="https://drive.google.com/thumbnail?id=1_64ebHAE2R9MM1Hun13hATgVLfxyhaW6&sz=w800"
+                        alt="Michael Venable Profile" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name" style="display: flex; align-items: center; gap: 10px;">
+                            Michael Venable
+                            <a href="https://www.linkedin.com/in/michael-venable-568452275/" target="_blank"
+                                style="display: inline-flex; align-items: center; text-decoration: none; transition: all 0.3s ease;">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 72 72" width="24"
+                                    style="transition: all 0.3s ease;">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path
+                                            d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z"
+                                            fill="#999" />
+                                        <path
+                                            d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z"
+                                            fill="#FFF" />
+                                    </g>
+                                </svg>
+                            </a>
+                        </h3>
+                        <p class="member-title">Co-Founder & Software Architect</p>
+                        <p class="member-experience">Over 20 Years of Experience</p>
+
+                        <div class="member-description">
+                            <p>Michael brings over 20 years of software development experience to the company, with a
+                            background spanning government, higher education, healthcare staffing, marine and offshore
+                            services, geospatial and aerial surveying, and cybersecurity.</p>
+                            <br>
+                            <p>His project experience covers a broad technical spectrum, including hardware automation
+                            and PLC integration, remote monitoring and control systems, workforce forecasting tools,
+                            document and content management platforms, public-facing web applications, system
+                            integration solutions, and GIS-based data visualization.</p>
+                        </div>
+
+                        <div class="education-section">
+                            <h4>Education</h4>
+                            <div class="education-item">
+                                <strong>MS Computer Science</strong><br>
+                                University of Louisiana at Lafayette, 2005
+                            </div>
+                            <div class="education-item">
+                                <strong>BS Computer Science</strong><br>
+                                University of Louisiana at Lafayette, 2002
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-skills">
+
+                    </div>
+                </div>
+
+                <div class="team-member" style="margin-top: 40px;">
+                    <img src="https://drive.google.com/thumbnail?id=1OlFu_GepV4qFLeom0r5jIvBEg3yNhBD7&sz=w800"
+                        alt="Todd Fontenot Profile" class="member-photo">
+                    <div class="member-info">
+                        <h3 class="member-name" style="display: flex; align-items: center; gap: 10px;">
+                            Todd Fontenot
+                            <a href="https://www.linkedin.com/in/todd-fontenot-1570b27/" target="_blank"
+                                style="display: inline-flex; align-items: center; text-decoration: none; transition: all 0.3s ease;">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 72 72" width="24" style="transition: fill 0.3s ease;">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path
+                                            d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z"
+                                            fill="#999" />
+                                        <path
+                                            d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z"
+                                            fill="#FFF" />
+                                    </g>
+                                </svg>
+                            </a>
+                        </h3>
+                        <p class="member-title">Co-Founder & Software Architect</p>
+                        <p class="member-experience">19 Years of Experience</p>
+
+                        <div class="member-description">
+                            <p>Todd brings nearly two decades of software development expertise across diverse
+                                industries including state government, disaster mitigation, and geographical surveying
+                                systems. His expertise spans the entire software development lifecycle, with deep
+                                knowledge in software architecture, domain modeling, and delivering enterprise-grade
+                                solutions that solve complex business challenges.</p>
+                        </div>
+
+                        <div class="education-section">
+                            <h4>Education</h4>
+                            <div class="education-item">
+                                <strong>MS Computer Science</strong><br>
+                                University of Louisiana at Lafayette, 2009
+                            </div>
+                            <div class="education-item">
+                                <strong>BS Computer Science</strong><br>
+                                University of Louisiana at Lafayette, 2008
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-skills">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="code"></i>
+                    </div>
+                    <h3 class="service-title">Custom Software Development</h3>
+                    <p class="service-description">
+                        We create bespoke software solutions tailored to your specific business needs. From web
+                        applications to mobile apps, our development team delivers robust, scalable, and maintainable
+                        code.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h3 class="service-title">Database Design & Optimization</h3>
+                    <p class="service-description">
+                        Expert database architecture and optimization services to ensure your data is structured
+                        efficiently, secure, and performs at peak levels as your business scales.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="cloud"></i>
+                    </div>
+                    <h3 class="service-title">Cloud Solutions</h3>
+                    <p class="service-description">
+                        Migrate to the cloud with confidence. We provide comprehensive cloud consulting, migration, and
+                        optimization services for AWS, Azure, and Google Cloud platforms.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3 class="service-title">Mobile App Development</h3>
+                    <p class="service-description">
+                        Native and cross-platform mobile applications that deliver exceptional user experiences. From
+                        iOS to Android, we cover all major platforms.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="settings"></i>
+                    </div>
+                    <h3 class="service-title">API Development & Integration</h3>
+                    <p class="service-description">
+                        Build robust APIs and seamlessly integrate third-party services. We ensure your systems
+                        communicate effectively and securely.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="service-title">Technical Consulting</h3>
+                    <p class="service-description">
+                        Strategic technology guidance to help you make informed decisions. From architecture reviews to
+                        technology stack selection, we're here to help.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backgrounds Section -->
+    <section class="backgrounds section" id="backgrounds"
+        style="background-color: #2c2c2c; color: white; padding: 80px 0; min-height: 500px;">
+        <div class="container">
+            <h2 class="section-title" style="color: white; text-align: center; font-size: 2.5rem; margin-bottom: 60px;">
+                Our Expertise Backgrounds</h2>
+            <div class="backgrounds-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div class="background-item" style="text-align: center; padding: 30px;">
+                    <div class="background-icon"
+                        style="width: 80px; height: 80px; background: #cd7f32; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i data-lucide="globe" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3 class="background-title"
+                        style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">Web Technologies
+                    </h3>
+                    <p class="background-description" style="color: white; line-height: 1.6;">
+                        Modern web frameworks including React, Angular, Node.js, and progressive web
+                        applications.
+                    </p>
+                </div>
+
+                <div class="background-item" style="text-align: center; padding: 30px;">
+                    <div class="background-icon"
+                        style="width: 80px; height: 80px; background: #cd7f32; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i data-lucide="server" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3 class="background-title"
+                        style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">Backend Systems
+                    </h3>
+                    <p class="background-description" style="color: white; line-height: 1.6;">
+                        Scalable backend architectures and microservices patterns.
+                    </p>
+                </div>
+
+                <div class="background-item" style="text-align: center; padding: 30px;">
+                    <div class="background-icon"
+                        style="width: 80px; height: 80px; background: #cd7f32; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i data-lucide="shield" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3 class="background-title"
+                        style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">Security &
+                        Compliance</h3>
+                    <p class="background-description" style="color: white; line-height: 1.6;">
+                        Enterprise-grade security implementations and compliance with industry standards.
+                    </p>
+                </div>
+
+                <div class="background-item" style="text-align: center; padding: 30px;">
+                    <div class="background-icon"
+                        style="width: 80px; height: 80px; background: #cd7f32; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i data-lucide="trending-up" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3 class="background-title"
+                        style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: white;">Performance
+                        Optimization</h3>
+                    <p class="background-description" style="color: white; line-height: 1.6;">
+                        Application performance tuning, load testing, and scalability engineering.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact"
+        style="background-color: #e5e4e2; padding: 80px 0; min-height: 600px;">
+        <div class="container">
+            <h2 class="section-title"
+                style="text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: #2c2c2c;">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to Start Your Project?</h3>
+                    <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
+                        We're excited to help bring your ideas to
+                        reality. Reach out to discuss your requirements and get a free, no obligation consultation.
+                    </p>                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:info@byterefactory.com" style="color: #cd7f32; text-decoration: none;">info@byterefactory.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            <div>+1 (337) 280-8154</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div>
+                            <strong>Location</strong><br>
+                            Lafayette, LA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdEvbek9jLfiV70ZGoVCpeS88noY3GE3UlIYVJUyrbLLF0O9g/viewform?embedded=true"
+                        width="640" height="877" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Byte Refactory LLC</div>
+                <div class="footer-attribution">
+                    Icons by <a href="https://lucide.dev" target="_blank" style="color: var(--bronze);">Lucide</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Byte Refactory LLC. All rights reserved. | Transforming Ideas into Exceptional Software
+                Solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        // Simple smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add event listeners for navigation
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(function (anchor) {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        // Use custom scrolling instead of fragment navigation
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+
+                        // Don't update the URL hash to avoid fragment navigation entirely
+                        // This prevents the iframe shifting issue in Google Sites
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
