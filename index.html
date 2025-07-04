@@ -15,6 +15,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <script src="utilities.js"></script>
 </head>
 
 <body>
@@ -25,6 +26,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#backgrounds">Backgrounds</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#references">References</a></li>
     </ol>
   </nav>
 
@@ -319,48 +321,119 @@
         style="background-color: #e5e4e2; padding: 80px 0; min-height: 600px;">
         <div class="container">
             <h2 class="section-title"
-                style="text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: #2c2c2c;">Contact Us</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Ready to Start Your Project?</h3>
-                    <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
-                        We're excited to help bring your ideas to
-                        reality. Reach out to discuss your requirements and get a free, no obligation consultation.
-                    </p>                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i data-lucide="mail"></i>
+                style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #2c2c2c;">Get In Touch</h2>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation" style="text-align: center; margin-bottom: 40px;">
+                <button class="tab-button active" data-tab="contact-tab" id="contact-button"
+                    style="background: #cd7f32; color: white; border: none; padding: 12px 24px; margin: 0 10px; cursor: pointer; border-radius: 5px; font-weight: 600; transition: all 0.3s ease;">
+                    Contact Us
+                </button>
+                <button class="tab-button" data-tab="references-tab" id="references-button"
+                    style="background: #999; color: white; border: none; padding: 12px 24px; margin: 0 10px; cursor: pointer; border-radius: 5px; font-weight: 600; transition: all 0.3s ease;">
+                    Provide a Reference
+                </button>
+            </div>
+
+            <!-- Contact Tab Content -->
+            <div class="tab-content active" id="contact-tab">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Ready to Start Your Project?</h3>
+                        <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
+                            We're excited to help bring your ideas to
+                            reality. Reach out to discuss your requirements and get a free, no obligation consultation.
+                        </p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:info@byterefactory.com" style="color: #cd7f32; text-decoration: none;">info@byterefactory.com</a>
+                            </div>
                         </div>
-                        <div>
-                            <strong>Email</strong><br>
-                            <a href="mailto:info@byterefactory.com" style="color: #cd7f32; text-decoration: none;">info@byterefactory.com</a>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <strong>Phone</strong><br>
+                                <div>+1 (337) 280-8154</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div>
+                                <strong>Location</strong><br>
+                                Lafayette, LA
+                            </div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i data-lucide="phone"></i>
-                        </div>
-                        <div>
-                            <strong>Phone</strong><br>
-                            <div>+1 (337) 280-8154</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i data-lucide="map-pin"></i>
-                        </div>
-                        <div>
-                            <strong>Location</strong><br>
-                            Lafayette, LA
-                        </div>
+                    <div class="contact-form">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdEvbek9jLfiV70ZGoVCpeS88noY3GE3UlIYVJUyrbLLF0O9g/viewform?embedded=true"
+                            width="640" height="877" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     </div>
                 </div>
+            </div>
 
-                <div class="contact-form">
-                    <iframe
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSdEvbek9jLfiV70ZGoVCpeS88noY3GE3UlIYVJUyrbLLF0O9g/viewform?embedded=true"
-                        width="640" height="877" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <!-- References Tab Content -->
+            <div class="tab-content" id="references-tab" style="display: none;">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Your Voice Matters</h3>
+                        <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
+                            We are incredibly grateful that you're taking the time to share your experience working with us. 
+                            Your honest feedback helps us grow and helps future clients understand the value we bring to projects.
+                        </p>
+                        
+                        <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
+                            Whether your experience was about our technical expertise, communication style, project delivery, 
+                            or problem-solving approach, we appreciate your perspective.
+                        </p>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <div>
+                                <strong>Professional References</strong><br>
+                                <span style="color: #666;">Help others understand our work quality</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="shield-check"></i>
+                            </div>
+                            <div>
+                                <strong>Confidential & Secure</strong><br>
+                                <span style="color: #666;">Handled with utmost care</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="heart"></i>
+                            </div>
+                            <div>
+                                <strong>Thank You</strong><br>
+                                <span style="color: #666;">Your time means the world to us</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdzpbP8n17IURyGCm4TtBZ_MvhOfxdjGdB3mXqSIfrWQpn2zQ/viewform?embedded=true"
+                            width="640" height="877" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -381,33 +454,18 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        // Simple smooth scrolling for navigation links
+        // Initialize Lucide icons and site functionality
         document.addEventListener('DOMContentLoaded', function () {
-            // Add event listeners for navigation
-            const navLinks = document.querySelectorAll('a[href^="#"]');
-            navLinks.forEach(function (anchor) {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        // Use custom scrolling instead of fragment navigation
-                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
-                        // Don't update the URL hash to avoid fragment navigation entirely
-                        // This prevents the iframe shifting issue in Google Sites
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+            // Initialize tab functionality
+            initializeTabs();
 
-                    }
-                });
-            });
+            // Initialize navigation
+            initializeNavigation();
         });
     </script>
 </body>

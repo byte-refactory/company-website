@@ -600,3 +600,12 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Tab Button Styles */
+.tab-button.tab-active {
+  background: var(--bronze) !important;
+}
+
+.tab-button.tab-inactive {
+  background: #999 !important;
+}
