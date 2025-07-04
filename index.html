@@ -20,13 +20,18 @@
 
 <body>
   <nav>
-    <ol>
-      <li><a href="#about">About</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#backgrounds">Backgrounds</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#references">References</a></li>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleMobileNav()">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <ol class="nav-menu">
+      <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+      <li><a href="#team" onclick="closeMobileNav()">Team</a></li>
+      <li><a href="#services" onclick="closeMobileNav()">Services</a></li>
+      <li><a href="#backgrounds" onclick="closeMobileNav()">Backgrounds</a></li>
+      <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+      <li><a href="#give-reference" onclick="closeMobileNav()">Give Reference</a></li>
     </ol>
   </nav>
 
