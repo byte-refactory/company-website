@@ -33,7 +33,7 @@ function switchTab(tabId) {
 function handleFragmentNavigation() {
     const hash = window.location.hash.substring(1);
     
-    if (hash === 'give-reference') {
+    if (hash === 'provide-reference') {
         switchTab('references-tab');
         // Scroll to contact section since references is part of it
         const contactSection = document.getElementById('contact');
@@ -76,7 +76,7 @@ function initializeTabs() {
             
             // Update URL hash
             if (tabId === 'references-tab') {
-                window.history.pushState(null, null, '#give-reference');
+                window.history.pushState(null, null, '#provide-reference');
             } else if (tabId === 'contact-tab') {
                 window.history.pushState(null, null, '#contact');
             }
@@ -97,7 +97,7 @@ function initializeNavigation() {
             const targetId = this.getAttribute('href').substring(1);
             
             // Handle references navigation
-            if (targetId === 'give-reference') {
+            if (targetId === 'provide-reference') {
                 switchTab('references-tab');
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
@@ -107,7 +107,7 @@ function initializeNavigation() {
                         behavior: 'smooth'
                     });
                 }
-                window.history.pushState(null, null, '#give-reference');
+                window.history.pushState(null, null, '#provide-reference');
                 return;
             }
             
