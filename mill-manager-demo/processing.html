@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supreme Rice Mill Manager - Processing</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header with Supreme Rice Branding -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/images/Logo.png" alt="Supreme Rice Logo">
+                    <div class="logo-text">Mill Manager</div>
+                </div>
+                <nav>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="farmers.html">Farmers</a></li>
+                        <li><a href="processing.html" class="active">Processing</a></li>
+                        <li><a href="storage.html">Storage</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- DEV NOTES: Processing Implementation -->
+            <div class="dev-notes">
+                <div class="dev-notes-header">Developer Implementation Notes</div>
+                <div class="dev-notes-content">
+                    <strong>Key Questions:</strong> Are there existing sensors/equipment that can provide data feeds? 
+                    What level of automation exists currently? Do operators need mobile access during processing?
+                    <br><strong>Potential Solutions:</strong> Manual data entry forms initially, with future IoT integration possibilities. 
+                    Could use simple status updates vs. complex workflow engines. Consider barcode scanning for batch tracking as a middle-ground approach.
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div class="mb-4">
+                <h1>Rice Processing</h1>
+                <p>Track rice batches from intake through drying, milling, and packaging</p>
+                <!-- TODO: Track timestamps, machine status, and logs -->
+            </div>
+
+            <!-- Processing Timeline/Workflow -->
+            <div class="card mb-5">
+                <div class="card-header">
+                    <h3>Processing Workflow</h3>
+                </div>
+                <div class="card-body">
+                    <!-- TODO: This section will display active rice processing steps for a given batch -->
+                    <div class="processing-timeline">
+                        <div class="timeline-step completed">
+                            <div class="timeline-icon">📦</div>
+                            <h4>Intake</h4>
+                            <p>Rice received from farmer</p>
+                        </div>
+                        
+                        <div class="timeline-step completed">
+                            <div class="timeline-icon">⚖️</div>
+                            <h4>Weighing</h4>
+                            <p>Initial weight measurement</p>
+                        </div>
+                        
+                        <div class="timeline-step active">
+                            <div class="timeline-icon">🌡️</div>
+                            <h4>Drying</h4>
+                            <p>Moisture reduction to optimal levels</p>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="timeline-icon">🏭</div>
+                            <h4>Milling</h4>
+                            <p>Hull removal and polishing</p>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="timeline-icon">🔍</div>
+                            <h4>Quality Check</h4>
+                            <p>Grade assessment and sorting</p>
+                        </div>
+                        
+                        <div class="timeline-step">
+                            <div class="timeline-icon">📋</div>
+                            <h4>Packaging</h4>
+                            <p>Final packaging for distribution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Processing Jobs -->
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <!-- Current Batch Details -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Batch #2024-001 - Active</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>Contract:</strong> SRC-2024-001 (John Boudreaux)
+                        </div>
+                        <div class="mb-3">
+                            <strong>Rice Type:</strong> Long Grain
+                        </div>
+                        <div class="mb-3">
+                            <strong>Initial Weight:</strong> 15,000 lbs
+                        </div>
+                        <div class="mb-3">
+                            <strong>Current Step:</strong> <span class="status-badge status-active">Drying</span>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Machine:</strong> Dryer Unit #2
+                        </div>
+                        <div class="mb-3">
+                            <strong>Operator:</strong> James Tran
+                        </div>
+                        <div class="mb-3">
+                            <strong>Start Time:</strong> 8:30 AM
+                        </div>
+                        <div class="mb-3">
+                            <strong>Est. Completion:</strong> 2:15 PM
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-2">
+                            <div class="flex justify-between mb-1">
+                                <span><strong>Progress</strong></span>
+                                <span>65%</span>
+                            </div>
+                            <div style="background: #e5e7eb; height: 12px; border-radius: 6px;">
+                                <div style="background: var(--sr-primary-red); height: 100%; width: 65%; border-radius: 6px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">View Details</button>
+                        <button class="btn btn-warning">Update Status</button>
+                    </div>
+                </div>
+
+                <!-- Processing Statistics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Processing Statistics</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="text-center">
+                                <div class="kpi-number" style="font-size: 2rem;">6</div>
+                                <div class="kpi-label">Jobs In Queue</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="kpi-number" style="font-size: 2rem;">92%</div>
+                                <div class="kpi-label">Avg Yield Rate</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="kpi-number" style="font-size: 2rem;">4.2h</div>
+                                <div class="kpi-label">Avg Process Time</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="kpi-number" style="font-size: 2rem;">3</div>
+                                <div class="kpi-label">Machines Active</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processing Queue Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Processing Queue</h3>
+                </div>
+                <div class="card-body">
+                    <!-- TODO: Integrate with mill machinery status and real-time monitoring -->
+                    <div class="table-container">
+                        <table class="table">
+                        <thead>
+                            <tr class="compact-header">
+                                <th>Batch #</th>
+                                <th>Contract</th>
+                                <th>Rice Type</th>
+                                <th>Weight (lbs)</th>
+                                <th>Current Step</th>
+                                <th>Machine</th>
+                                <th>Operator</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>2024-001</strong></td>
+                                <td>SRC-2024-001</td>
+                                <td>Long Grain</td>
+                                <td>15,000</td>
+                                <td>Drying</td>
+                                <td>Dryer #2</td>
+                                <td>James Tran</td>
+                                <td><span class="status-badge status-active">In Progress</span></td>
+                                <td><button class="btn" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Monitor</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024-002</strong></td>
+                                <td>SRC-2024-002</td>
+                                <td>Jasmine</td>
+                                <td>12,000</td>
+                                <td>Weighing</td>
+                                <td>Scale #1</td>
+                                <td>Maria Santos</td>
+                                <td><span class="status-badge status-active">In Progress</span></td>
+                                <td><button class="btn" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Monitor</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024-003</strong></td>
+                                <td>SRC-2023-015</td>
+                                <td>Long Grain</td>
+                                <td>18,000</td>
+                                <td>Quality Check</td>
+                                <td>QC Station #1</td>
+                                <td>Robert Kim</td>
+                                <td><span class="status-badge status-active">In Progress</span></td>
+                                <td><button class="btn" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Monitor</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024-004</strong></td>
+                                <td>SRC-2024-001</td>
+                                <td>Long Grain</td>
+                                <td>10,500</td>
+                                <td>Intake</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">Waiting</span></td>
+                                <td><button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2024-005</strong></td>
+                                <td>SRC-2024-003</td>
+                                <td>Long Grain</td>
+                                <td>20,000</td>
+                                <td>Intake</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">Waiting</span></td>
+                                <td><button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Start</button></td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machine Status -->
+            <div class="mt-5">
+                <h2>Equipment Status</h2>
+                <div class="grid grid-cols-4 mt-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4>Dryer #1</h4>
+                            <div class="kpi-number" style="font-size: 1.5rem; color: var(--sr-success-green);">✓</div>
+                            <div class="kpi-label">Available</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4>Dryer #2</h4>
+                            <div class="kpi-number" style="font-size: 1.5rem; color: var(--sr-warning-orange);">●</div>
+                            <div class="kpi-label">In Use</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4>Mill #1</h4>
+                            <div class="kpi-number" style="font-size: 1.5rem; color: var(--sr-danger-red);">⚠</div>
+                            <div class="kpi-label">Maintenance</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4>Mill #2</h4>
+                            <div class="kpi-number" style="font-size: 1.5rem; color: var(--sr-success-green);">✓</div>
+                            <div class="kpi-label">Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Supreme Rice Mill Manager - Processing Operations</p>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    document.getElementById('navLinks').classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

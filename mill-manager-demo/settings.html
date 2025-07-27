@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supreme Rice Mill Manager - Settings</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Header with Supreme Rice Branding -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/images/Logo.png" alt="Supreme Rice Logo">
+                    <div class="logo-text">Mill Manager</div>
+                </div>
+                <nav>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="farmers.html">Farmers</a></li>
+                        <li><a href="processing.html">Processing</a></li>
+                        <li><a href="storage.html">Storage</a></li>
+                        <li><a href="settings.html" class="active">Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- DEV NOTES: Settings Implementation -->
+            <div class="dev-notes">
+                <div class="dev-notes-header">Developer Implementation Notes</div>
+                <div class="dev-notes-content">
+                    <strong>Key Questions:</strong> How many users will access the system? Are there regulatory compliance requirements? 
+                    What level of audit logging is needed for mill operations?
+                    <br><strong>Potential Solutions:</strong> Start with simple username/password auth, consider Active Directory integration for enterprise. 
+                    Basic role system (Admin/Operator/Viewer) vs. granular permissions. Audit logging could range from simple change logs to full compliance-grade systems.
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div class="mb-4">
+                <h1>System Settings</h1>
+                <p>Configure application settings, user roles, and system preferences</p>
+                <!-- TODO: Implement user authentication and role-based access control -->
+            </div>
+
+            <!-- Settings Sections -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- User Management - Full Width -->
+                <div class="card user-management-panel">
+                    <div class="card-header">
+                        <h3>User Management</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- User Search and Filter -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="form-group" style="margin: 0; flex: 1;">
+                                <input type="text" class="form-input" placeholder="Search users by name or email..."
+                                    style="margin: 0;">
+                            </div>
+                            <select class="form-input" style="margin: 0; width: auto;">
+                                <option>All Roles</option>
+                                <option>Administrator</option>
+                                <option>Mill Operator</option>
+                                <option>Contract Manager</option>
+                                <option>Quality Control</option>
+                                <option>Warehouse Staff</option>
+                            </select>
+                            <select class="form-input" style="margin: 0; width: auto;">
+                                <option>All Status</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Suspended</option>
+                            </select>
+                        </div>
+
+                        <!-- TODO: Integrate with authentication system (JWT, Azure AD, etc.) -->
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr class="compact-header">
+                                        <th class="user-col">User</th>
+                                        <th class="role-col">Role</th>
+                                        <th class="activity-col">Activity</th>
+                                        <th class="status-col">Status</th>
+                                        <th class="actions-col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar">A</div>
+                                                <div>
+                                                    <div class="user-name">Admin User</div>
+                                                    <div class="user-email">admin@supremerice.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="role-badge role-admin">Administrator</span>
+                                            <div class="permissions-preview">All Permissions</div>
+                                        </td>
+                                        <td>
+                                            <div class="activity-info">
+                                                <div>Today, 2:30 PM</div>
+                                                <div class="text-muted">User Management</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Edit User">✏️</button>
+                                                <button class="btn-icon" title="View Activity">👁️</button>
+                                                <button class="btn-icon" title="Manage Permissions">🔒</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar">M</div>
+                                                <div>
+                                                    <div class="user-name">Mill Operator</div>
+                                                    <div class="user-email">mill.operator@supremerice.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="role-badge role-operator">Mill Operator</span>
+                                            <div class="permissions-preview">Processing, Storage</div>
+                                        </td>
+                                        <td>
+                                            <div class="activity-info">
+                                                <div>Today, 1:15 PM</div>
+                                                <div class="text-muted">Processing Status</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Edit User">✏️</button>
+                                                <button class="btn-icon" title="View Activity">👁️</button>
+                                                <button class="btn-icon" title="Manage Permissions">🔒</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar">C</div>
+                                                <div>
+                                                    <div class="user-name">Contract Manager</div>
+                                                    <div class="user-email">contracts@supremerice.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="role-badge role-manager">Contract Manager</span>
+                                            <div class="permissions-preview">Farmers, Contracts</div>
+                                        </td>
+                                        <td>
+                                            <div class="activity-info">
+                                                <div>Yesterday, 4:45 PM</div>
+                                                <div class="text-muted">Contract Review</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Edit User">✏️</button>
+                                                <button class="btn-icon" title="View Activity">👁️</button>
+                                                <button class="btn-icon" title="Manage Permissions">🔒</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar">Q</div>
+                                                <div>
+                                                    <div class="user-name">Quality Inspector</div>
+                                                    <div class="user-email">quality@supremerice.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="role-badge role-quality">Quality Control</span>
+                                            <div class="permissions-preview">Quality Reports</div>
+                                        </td>
+                                        <td>
+                                            <div class="activity-info">
+                                                <div>3 days ago</div>
+                                                <div class="text-muted">Quality Assessment</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-pending">Inactive</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Edit User">✏️</button>
+                                                <button class="btn-icon" title="View Activity">👁️</button>
+                                                <button class="btn-icon" title="Activate User">🔄</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar">W</div>
+                                                <div>
+                                                    <div class="user-name">Warehouse Staff</div>
+                                                    <div class="user-email">warehouse@supremerice.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="role-badge role-staff">Warehouse Staff</span>
+                                            <div class="permissions-preview">Storage, Inventory</div>
+                                        </td>
+                                        <td>
+                                            <div class="activity-info">
+                                                <div>Today, 11:30 AM</div>
+                                                <div class="text-muted">Storage Update</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="Edit User">✏️</button>
+                                                <button class="btn-icon" title="View Activity">👁️</button>
+                                                <button class="btn-icon" title="Manage Permissions">🔒</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">Total Users</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">4</div>
+                                <div class="stat-label">Active</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">1</div>
+                                <div class="stat-label">Inactive</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Online Today</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <button class="btn btn-primary">+ Add New User</button>
+                                <button class="btn btn-secondary">Export Users</button>
+                                <button class="btn btn-secondary">Bulk Actions</button>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button class="btn btn-secondary">Role Permissions</button>
+                                <button class="btn btn-secondary">Activity Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row for Other Settings -->
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <!-- Notification Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Notification Thresholds</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label" for="storage-warning">Storage Capacity Warning (%)</label>
+                            <input type="number" id="storage-warning" class="form-input" value="85" min="1" max="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="storage-critical">Storage Capacity Critical (%)</label>
+                            <input type="number" id="storage-critical" class="form-input" value="95" min="1" max="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contract-overdue">Contract Overdue Alert (days)</label>
+                            <input type="number" id="contract-overdue" class="form-input" value="7" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="processing-timeout">Processing Step Timeout
+                                (hours)</label>
+                            <input type="number" id="processing-timeout" class="form-input" value="12" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="quality-expiry">Quality Check Expiry Warning
+                                (days)</label>
+                            <input type="number" id="quality-expiry" class="form-input" value="30" min="1">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">Save Settings</button>
+                        <button class="btn">Reset to Defaults</button>
+                    </div>
+                </div>
+
+                <!-- System Configuration -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>System Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- TODO: Feature toggles and system preferences -->
+                        <div class="form-group">
+                            <label class="form-label">Feature Toggles</label>
+                            <div class="mb-2">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                                    <input type="checkbox" checked> Enable Real-time IoT Monitoring
+                                </label>
+                            </div>
+                            <div class="mb-2">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                                    <input type="checkbox" checked> Automatic Batch Processing
+                                </label>
+                            </div>
+                            <div class="mb-2">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                                    <input type="checkbox"> Enable Predictive Maintenance
+                                </label>
+                            </div>
+                            <div class="mb-2">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                                    <input type="checkbox" checked> Email Notifications
+                                </label>
+                            </div>
+                            <div class="mb-2">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                                    <input type="checkbox"> SMS Alerts for Critical Issues
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="refresh-interval">Dashboard Refresh Interval
+                                (seconds)</label>
+                            <select id="refresh-interval" class="form-input">
+                                <option value="30">30 seconds</option>
+                                <option value="60" selected>1 minute</option>
+                                <option value="300">5 minutes</option>
+                                <option value="600">10 minutes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="data-retention">Data Retention Period (months)</label>
+                            <select id="data-retention" class="form-input">
+                                <option value="12">12 months</option>
+                                <option value="24" selected>24 months</option>
+                                <option value="36">36 months</option>
+                                <option value="60">5 years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="timezone">System Timezone</label>
+                            <select id="timezone" class="form-input">
+                                <option value="America/Chicago" selected>Central Time (CT)</option>
+                                <option value="America/New_York">Eastern Time (ET)</option>
+                                <option value="America/Denver">Mountain Time (MT)</option>
+                                <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">Apply Changes</button>
+                    </div>
+                </div>
+
+                <!-- Integration Settings -->
+                <div class="card external-integrations-panel">
+                    <div class="card-header">
+                        <h3>External Integrations</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- TODO: Configure API endpoints and external system connections -->
+                        <div class="integration-grid">
+                            <div class="integration-section">
+                                <h4 style="margin-bottom: 1rem;">ERP System Integration</h4>
+                                <div class="form-group">
+                                    <label class="form-label" for="erp-endpoint">ERP API Endpoint</label>
+                                    <input type="url" id="erp-endpoint" class="form-input"
+                                        placeholder="https://api.supremerice.com/erp/v1/">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="erp-status">Connection Status</label>
+                                    <div class="flex align-center gap-2">
+                                        <span class="status-badge status-completed">Connected</span>
+                                        <button class="btn btn-secondary">Test Connection</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="integration-section">
+                                <h4 style="margin-bottom: 1rem;">IoT Sensor Network</h4>
+                                <div class="form-group">
+                                    <label class="form-label" for="iot-endpoint">IoT Gateway URL</label>
+                                    <input type="url" id="iot-endpoint" class="form-input"
+                                        placeholder="mqtt://sensors.supremerice.local:1883">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="iot-status">Connection Status</label>
+                                    <div class="flex align-center gap-2">
+                                        <span class="status-badge status-active">Active</span>
+                                        <span style="font-size: 0.875rem; color: var(--sr-text-medium);">Last Update: 2
+                                            min ago</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="integration-section">
+                                <h4 style="margin-bottom: 1rem;">Email Service</h4>
+                                <div class="form-group">
+                                    <label class="form-label" for="email-provider">Email Provider</label>
+                                    <select id="email-provider" class="form-input">
+                                        <option value="smtp" selected>SMTP Server</option>
+                                        <option value="sendgrid">SendGrid</option>
+                                        <option value="mailgun">Mailgun</option>
+                                        <option value="outlook">Outlook 365</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="email-status">Service Status</label>
+                                    <div class="flex align-center gap-2">
+                                        <span class="status-badge status-completed">Configured</span>
+                                        <button class="btn btn-secondary">Send Test Email</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="integration-section">
+                                <h4 style="margin-bottom: 1rem;">Weather API</h4>
+                                <div class="form-group">
+                                    <label class="form-label" for="weather-api">Weather Service API Key</label>
+                                    <input type="text" id="weather-api" class="form-input"
+                                        placeholder="Enter API key for weather data">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="weather-status">Service Status</label>
+                                    <div class="flex align-center gap-2">
+                                        <span class="status-badge status-active">Active</span>
+                                        <button class="btn btn-secondary">Test API</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <button class="btn btn-primary">Update Integrations</button>
+                                <button class="btn btn-secondary">Test All Connections</button>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button class="btn btn-secondary">Integration Logs</button>
+                                <button class="btn btn-secondary">API Documentation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Row for Other Settings -->
+            <div class="grid grid-cols-2 gap-4 mt-4">
+            </div>
+
+            <!-- System Information -->
+            <div class="mt-5">
+                <div class="card system-information-panel">
+                    <div class="card-header">
+                        <h3>System Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <h4>Application Version</h4>
+                                <p>Supreme Rice Mill Manager v2.1.3</p>
+                                <p style="font-size: 0.875rem; color: var(--sr-text-medium);">Released: January 15,
+                                    2025</p>
+                            </div>
+                            <div>
+                                <h4>Database</h4>
+                                <p>SQL Server 2022 (On-premises)</p>
+                                <p style="font-size: 0.875rem; color: var(--sr-text-medium);">Last Backup: Today
+                                    3:00 AM</p>
+                            </div>
+                            <div>
+                                <h4>System Health</h4>
+                                <p><span class="status-badge status-active">All Systems Operational</span></p>
+                                <p style="font-size: 0.875rem; color: var(--sr-text-medium);">Uptime: 47 days, 12
+                                    hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn">View System Logs</button>
+                        <button class="btn">Check for Updates</button>
+                        <button class="btn btn-warning">Backup Database</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Supreme Rice Mill Manager - System Configuration</p>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    document.getElementById('navLinks').classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+</html>
