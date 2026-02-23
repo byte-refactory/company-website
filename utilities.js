@@ -32,7 +32,7 @@ function switchTab(tabId) {
 // Handle fragment-based navigation
 function handleFragmentNavigation() {
     const hash = window.location.hash.substring(1);
-    
+
     if (hash === 'provide-reference') {
         switchTab('references-tab');
         // Scroll to contact section since references is part of it
@@ -73,7 +73,7 @@ function initializeTabs() {
         button.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
             switchTab(tabId);
-            
+
             // Update URL hash
             if (tabId === 'references-tab') {
                 window.history.pushState(null, null, '#provide-reference');
@@ -87,47 +87,17 @@ function initializeTabs() {
     window.addEventListener('hashchange', handleFragmentNavigation);
 }
 
-// Enhanced navigation handling
-function initializeNavigation() {
-    // Add event listeners for navigation
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    navLinks.forEach(function (anchor) {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            
-            // Handle references navigation
-            if (targetId === 'provide-reference') {
-                switchTab('references-tab');
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    const targetPosition = contactSection.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-                window.history.pushState(null, null, '#provide-reference');
-                return;
-            }
-            
-            // Handle contact navigation
-            if (targetId === 'contact') {
-                switchTab('contact-tab');
-            }
-            
-            const target = document.getElementById(targetId);
-            if (target) {
-                // Use custom scrolling instead of fragment navigation
-                const targetPosition = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
+function initializeTestimonialButtons() {
+    const testimonialNavigationButtons = document.querySelector('#testimonials nav');
+    testimonialNavigationButtons.addEventListener('click', e => {
+        e.preventDefault();
 
-                // Don't update the URL hash to avoid fragment navigation entirely
-                // This prevents the iframe shifting issue in Google Sites
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+        const targetId = e.target.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        targetElement?.scrollIntoView({
+            block: 'nearest',
+            inline: 'start',
         });
     });
 }
@@ -137,7 +107,7 @@ function toggleMobileNav() {
     const nav = document.querySelector('nav');
     const navMenu = document.querySelector('.nav-menu');
     const navToggle = document.querySelector('.nav-toggle');
-    
+
     if (nav.classList.contains('nav-open')) {
         closeMobileNav();
     } else {
@@ -145,7 +115,7 @@ function toggleMobileNav() {
         navMenu.classList.add('show');
         navToggle.classList.add('active');
         navToggle.setAttribute('aria-expanded', 'true');
-        
+
         // Prevent body scroll when menu is open
         document.body.style.overflow = 'hidden';
     }
@@ -155,12 +125,12 @@ function closeMobileNav() {
     const nav = document.querySelector('nav');
     const navMenu = document.querySelector('.nav-menu');
     const navToggle = document.querySelector('.nav-toggle');
-    
+
     nav.classList.remove('nav-open');
     navMenu.classList.remove('show');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
-    
+
     // Restore body scroll
     document.body.style.overflow = '';
 }
@@ -169,9 +139,9 @@ function closeMobileNav() {
 document.addEventListener('click', function(event) {
     const nav = document.querySelector('nav');
     const navToggle = document.querySelector('.nav-toggle');
-    
-    if (nav && nav.classList.contains('nav-open') && 
-        !nav.contains(event.target) && 
+
+    if (nav && nav.classList.contains('nav-open') &&
+        !nav.contains(event.target) &&
         !navToggle.contains(event.target)) {
         closeMobileNav();
     }

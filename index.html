@@ -19,17 +19,19 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="nav-primary">
     <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleMobileNav()">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
     </button>
+
     <ol class="nav-menu" onclick="closeMobileNav()">
       <li><a href="#about">About</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#backgrounds">Backgrounds</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#provide-reference">Provide Reference</a></li>
     </ol>
@@ -321,13 +323,48 @@
         </div>
     </section>
 
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <ul>
+                <li id="testimonial-1">
+                    <blockquote>
+                        <p>First, we want to thank the Byte Refactory team for stepping in and assisting us during a very
+                        time-sensitive situation. Your team took our challenge head-on and worked diligently to get our app back
+                        up and running in record time. In the short period we've worked with you, we've been extremely impressed
+                        by both your technical expertise and your determination to resolve even the smallest details. Byte
+                        Refactory took on this project, dissected our app, rebuilt it, and delivered results that exceeded our
+                        expectations. We're extremely pleased with the work Todd and Michael provided in restoring our app. We
+                        will absolutely continue working with Byte Refactory and confidently recommend them to anyone seeking
+                        professional app development and support.</p>
+                    </blockquote>
+                    <cite>Mobile Score</cite>
+                </li>
+                <li id="testimonial-2">
+                    <blockquote>
+                        <p>We had a wonderful experience with Byte Refactory. Todd and Michael are responsive and insightful. I
+                        needed a short-deadline proposal and they delivered. They clearly communicated that they understood the
+                        scope of work, provided realistic estimate of the work required, and delivered as expected.</p>
+                        <p>I'm looking forward to ongoing work with this team and our next project together.</p>
+                    </blockquote>
+                    <cite>The Computer Coach</cite>
+                </li>
+            </ul>
+
+            <nav class="testimonial-nav">
+                <a href="#testimonial-1" aria-label="Testimonial 1"></a>
+                <a href="#testimonial-2" aria-label="Testimonial 2"></a>
+            </nav>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact section" id="contact"
         style="background-color: #e5e4e2; padding: 80px 0; min-height: 600px;">
         <div class="container">
             <h2 class="section-title"
                 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #2c2c2c;">Get In Touch</h2>
-            
+
             <!-- Tab Navigation -->
             <div class="tab-navigation" style="text-align: center; margin-bottom: 40px;">
                 <button class="tab-button active" data-tab="contact-tab" id="contact-button"
@@ -394,12 +431,12 @@
                     <div class="contact-info">
                         <h3>Your Voice Matters</h3>
                         <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
-                            We are incredibly grateful that you're taking the time to share your experience working with us. 
+                            We are incredibly grateful that you're taking the time to share your experience working with us.
                             Your honest feedback helps us grow and helps future clients understand the value we bring to projects.
                         </p>
-                        
+
                         <p style="margin-bottom: 30px; color: #666; line-height: 1.6;">
-                            Whether your experience was about our technical expertise, communication style, project delivery, 
+                            Whether your experience was about our technical expertise, communication style, project delivery,
                             or problem-solving approach, we appreciate your perspective.
                         </p>
 
@@ -459,19 +496,15 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons and site functionality
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Lucide icons
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
 
-            // Initialize tab functionality
             initializeTabs();
-
-            // Initialize navigation
-            initializeNavigation();
         });
+
+        initializeTestimonialButtons();
     </script>
 </body>
 
